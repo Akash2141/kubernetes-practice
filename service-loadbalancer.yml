@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-loadbalancer
+spec:
+  type: LoadBalancer
+  selector: 
+    app.kubernetes.io/name: test
+  ports: 
+    - protocol: TCP
+      # The current service port
+      port: 8080
+      # the port number that we are targetting
+      targetPort: 3000
+  # ClusterIP: 10.12.12.12

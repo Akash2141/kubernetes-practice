@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+  labels:
+    app.kubernetes.io/name: test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: test
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: test
+    spec:
+      containers:
+        - name: test
+          image: asgupta2141/test-pri-repo:1.0
+          imagePullPolicy: Never
+          # ports:
+          # - containerPort: 8000
+          #   name: http
+          #   protocol: TCP
+          # readinessProbe: we can use readiness probe for backend to check if backend is ready for request
+          #   httpGet:
+          #     path: /
+          #     port: 8000
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 10
+          #   timeoutSeconds: 2
+
